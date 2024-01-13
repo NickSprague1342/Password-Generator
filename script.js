@@ -1,3 +1,8 @@
+var upperCaseArr = Array.from('QWERTYUIOPASDFGHJKLZXCVBNM')
+var lowerCaseArr = Array.from('qwertyuiopasdfghjklzxcvbnm')
+var specialCharacter = Array.from('`~!@#$%^&*()-_=+\|]}[{";:/?.>,<')
+
+
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
