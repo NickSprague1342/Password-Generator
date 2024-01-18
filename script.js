@@ -15,6 +15,8 @@ get.addEventListener('click', function () {
   document.getElementById('password').placeholder = newps
 });
 
+
+//below function generates password on click
 function generatePassword() {
   enter = parseInt(prompt('How many characters would you like your password? Choose between 8 and 128 characters.'));
 }
@@ -36,6 +38,7 @@ if (!upperCaseArr && !lowerCaseArr && !specialCharacter && !number) {
 }
 
 
+
 //puts password in provided textbox
 function UserInput(newps) {
   document.getElementById('password').textContent = newps;
@@ -45,6 +48,9 @@ var copy = document.querySelector('#copy');
 copy.addEventListener('click', function(){
   copyPassword();
 });
+
+
+
 
 
 
