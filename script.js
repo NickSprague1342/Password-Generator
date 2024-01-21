@@ -16,111 +16,99 @@ var choices;
 var get = document.querySelector("#generate");
 
 get.addEventListener("click", function () {
-    newps = generatePassword();
-    document.getElementById("password").placeholder = newps;
+  newps = generatePassword();
+  document.getElementById("password").placeholder = newps;
 });
 
 //this is the generate password function
 function generatePassword() {
-    // Asks user input
-    enter = parseInt(prompt("How many characters would you like your password? Choose between 8 and 128"));
-  
-    if (!enter) {
-        alert("This needs a value in order to proceed");
-    } else if (enter < 8 || enter > 128) {
-      
-        enter = parseInt(prompt("You must choose between 8 and 128"));
+  // Asks user input
+  enter = parseInt(prompt("How many characters would you like your password? Choose between 8 and 128"));
 
-    } else {
-        // Continues once user input is validated 1-4
-        confirmNumber = confirm("Would you like your password to contain numbers?");
-        confirmSpecialCharacter = confirm("Would you like your password to contain special characters?");
-        confirmUppercase = confirm("Would you like your password to contain Uppercase letters?");
-        confirmLowercase = confirm("Would you like your password to contain Lowercase letters?");
-    };
+  if (!enter) {
+    alert("This needs a value in order to proceed");
+  } else if (enter < 8 || enter > 128) {
 
-    // Else if for 4 negative options
-    if (!confirmSpecialCharacter && !confirmNumber && !confirmUppercase && !confirmLowercase) {
-        choices = alert("You must choose at least one criteria!");
-  
+    enter = parseInt(prompt("You must choose between 8 and 128"));
 
-    }
-    // First if statement that uses user input prompts to determine choices
-    // Else if for 4 positive options
-    else if (specialCharacter && numberArr && upperCaseArr && lowerCaseArr) {
+  } else {
+    // Continues once user input is validated 1-4
+    confirmNumber = confirm("Would you like your password to contain numbers?");
+    confirmSpecialCharacter = confirm("Would you like your password to contain special characters?");
+    confirmUppercase = confirm("Would you like your password to contain Uppercase letters?");
+    confirmLowercase = confirm("Would you like your password to contain Lowercase letters?");
 
-        choices = specialCharacter.concat(numberArr, upperCaseArr, lowerCaseArr);
-    }
-    // Else if for 3 positive options
-    else if (specialCharacter && numberArr && upperCaseArr) {
-        choices = specialCharacter.concat(numberArr, upperCaseArr);
-    }
-    else if (specialCharacter && numberArr && lowerCaseArr) {
-        choices = specialCharacter.concat(numberArr, lowerCaseArr);
-    }
-    else if (specialCharacter && confirmLowercase && upperCaseArr) {
-        choices = specialCharacter.concat(lowerCaseArr, upperCaseArr);
-    }
-    else if (numberArr && lowerCaseArr && confirmUppercase) {
-        choices = numberArr.concat(lowerCaseArr, upperCaseArr);
-    }
-    
-    else if (specialCharacter && numberArr) {
-        choices = specialCharacter.concat(numberArr);
+  } if (!confirmSpecialCharacter && !confirmNumber && !confirmUppercase && !confirmLowercase) {
+    choices = alert("You must choose at least one criteria!");
 
-    } else if (specialCharacter && lowerCaseArr) {
-        choices = specialCharacter.concat(lowerCaseArr);
+  } else if (confirmSpecialCharacter && confirmNumber && confirmUppercase && confirmLowercase) {
+    choices = specialCharacter.concat(numberArr, upperCaseArr, lowerCaseArr);
 
-    } else if (specialCharacter && upperCaseArr) {
-        choices = specialCharacter.concat(upperCaseArr);
-    }
-    else if (lowerCaseArr && numberArr) {
-        choices = lowerCaseArr.concat(numberArr);
+  } else if (confirmSpecialCharacter && confirmNumber && confirmUppercase) {
+    choices = specialCharacter.concat(numberArr, upperCaseArr);
 
-    } else if (lowerCaseArr && upperCaseArr) {
-        choices = lowerCaseArr.concat(upperCaseArr);
+  } else if (confirmSpecialCharacter && confirmNumber && confirmLowercase) {
+    choices = specialCharacter.concat(numberArr, lowerCaseArr);
 
-    } else if (numberArr && upperCaseArr) {
-        choices = numberArr.concat(upperCaseArr);
-    }
-   
-    else if (specialCharacter) {
-        choices = specialCharacter;
-    }
-    else if (numberArr) {
-        choices = numberArr;
-    }
-    else if (lowerCaseArr) {
-        choices = lowerCaseArr;
-    }
-   
-    else if (upperCaseArr) {
-        choices = upperCaseArr;
-    };
+  } else if (confirmSpecialCharacter && confirmLowercase && confirmUppercase) {
+    choices = specialCharacter.concat(lowerCaseArr, upperCaseArr);
 
-    var password = [];
+  } else if (confirmNumber && confirmLowercase && confirmUppercase) {
+    choices = numberArr.concat(lowerCaseArr, upperCaseArr);
 
-   
-    // Random selection of all variables: 
-    for (var i = 0; i < enter; i++) {
-        var pickChoices = choices[Math.floor(Math.random() * choices.length)];
-        password.push(pickChoices);
-    }
-  
-    var newps = password.join("");
-    UserInput(newps);
-    return newps;
+  } else if (confirmSpecialCharacter && confirmNumber) {
+    choices = specialCharacter.concat(numberArr);
+
+  } else if (confirmSpecialCharacter && confirmLowercase) {
+    choices = specialCharacter.concat(lowerCaseArr);
+
+  } else if (confirmSpecialCharacter && confirmUppercase) {
+    choices = specialCharacter.concat(upperCaseArr);
+
+  } else if (confirmLowercase && confirmNumber) {
+    choices = lowerCaseArr.concat(numberArr);
+
+  } else if (confirmLowercase && confirmUppercase) {
+    choices = lowerCaseArr.concat(upperCaseArr);
+
+  } else if (confirmNumber && confirmUppercase) {
+    choices = numberArr.concat(upperCaseArr);
+
+  } else if (confirmSpecialCharacter) {
+    choices = specialCharacter;
+
+  } else if (confirmNumber) {
+    choices = numberArr;
+
+  } else if (confirmLowercase) {
+    choices = lowerCaseArr;
+
+  } else if (confirmUppercase) {
+    choices = upperCaseArr;
+  };
+
+  var password = [];
+
+  // Random selection of all variables: 
+  for (var i = 0; i < enter; i++) {
+    var pickChoices = choices[Math.floor(Math.random() * choices.length)];
+    password.push(pickChoices);
+  }
+
+  var newps = password.join("");
+  UserInput(newps);
+  return newps;
 }
 // password into the textbox
 
 function UserInput(newps) {
-    document.getElementById("password").textContent = newps;
+  document.getElementById("password").textContent = newps;
 
 }
 
 var copy = document.querySelector("#copy");
 copy.addEventListener("click", function () {
-    copyPassword();
+  copyPassword();
 });
 
 
