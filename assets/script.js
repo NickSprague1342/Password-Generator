@@ -1,4 +1,4 @@
-// User input variables: 
+//user inputs 
 var enter;
 var confirmUppercase;
 var confirmLowercase;
@@ -22,7 +22,7 @@ get.addEventListener("click", function () {
 
 //this is the generate password function
 function generatePassword() {
-  // Asks user input
+  //user input
   enter = parseInt(prompt("How many characters would you like your password? Choose between 8 and 128"));
 
   if (!enter) {
@@ -32,7 +32,7 @@ function generatePassword() {
     enter = parseInt(prompt("You must choose between 8 and 128"));
 
   } else {
-    // Continues once user input is validated 1-4
+    //user input questions
     confirmNumber = confirm("Would you like your password to contain numbers?");
     confirmSpecialCharacter = confirm("Would you like your password to contain special characters?");
     confirmUppercase = confirm("Would you like your password to contain Uppercase letters?");
@@ -89,7 +89,7 @@ function generatePassword() {
 
   var password = [];
 
-  // Random selection of all variables: 
+  //randomizer(sp?)
   for (var i = 0; i < enter; i++) {
     var pickChoices = choices[Math.floor(Math.random() * choices.length)];
     password.push(pickChoices);
@@ -99,7 +99,7 @@ function generatePassword() {
   UserInput(newps);
   return newps;
 }
-// password into the textbox
+//password into the textbox
 
 function UserInput(newps) {
   document.getElementById("password").textContent = newps;
